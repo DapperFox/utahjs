@@ -1,20 +1,13 @@
 import React from "react";
-import { Router, Route, Link } from 'react-router'
+import { Router, Route } from 'react-router';
+import SimpleD3 from "./views/simple_d3";
+import AllReact from "./views/all_react";
+import Advanced from "./views/advanced";
 
-import SimpleGraph from "./SimpleGraph";
-import AllReact from "./AllReact";
-import Advanced from "./Advanced";
 
-class Main extends React.Component{
-  render() {
-    return (
-      <Router>
-        <Route path="/" component={SimpleGraph}>
-        <Route path="react" component={AllReact}/>
-        <Route path="advanced" component={Advanced}/>
-      </Router>
-    );
-  }
-}
-
-React.render(<Main />, document.getElementById("react"));
+React.render((
+  <Router>
+    <Route path="/" component={SimpleD3} />
+    <Route path="react" component={AllReact} />
+    <Route path="advanced" component={Advanced} />
+  </Router>), document.getElementById("react"));
