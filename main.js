@@ -1,13 +1,19 @@
 import React from "react";
-import Router from "react-router";
+import { Router, Route, Link } from 'react-router'
+
+import SimpleGraph from "./SimpleGraph";
+import AllReact from "./AllReact";
+import Advanced from "./Advanced";
 
 class Main extends React.Component{
   render() {
     return (
-      <div>
-        <h1>Hey there</h1>
-      </div>
-      );
+      <Router>
+        <Route path="/" component={SimpleGraph}>
+        <Route path="react" component={AllReact}/>
+        <Route path="advanced" component={Advanced}/>
+      </Router>
+    );
   }
 }
 
