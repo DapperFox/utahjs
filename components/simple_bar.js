@@ -1,8 +1,13 @@
 import React from "react";
 import d3 from "d3";
 import NVD3 from "nvd3";
+import shallowEqual from "react/lib/shallowEqual";
 
 export default class SimpleD3 extends React.Component {
+
+  shouldComponentUpdate (nextProps, nextState) {
+    return !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
+  }
 
   buildGraph() {
     NVD3.addGraph(() => {
@@ -10,6 +15,7 @@ export default class SimpleD3 extends React.Component {
       this.chart
         .x(function(d) { return d.label })
         .y(function(d) { return d.value })
+        .tooltips(true);
 
       NVD3.utils.windowResize(this.chart.update);
       return this.chart;
@@ -26,6 +32,7 @@ export default class SimpleD3 extends React.Component {
   }
 
   update () {
+    console.log('update');
     NVD3.addGraph(() => {
       d3.select(React.findDOMNode(this))
         .datum(this.props.data)
