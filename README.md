@@ -1,4 +1,7 @@
 # utahjs
 
 Data visualization examples for the UtahJS conference.
-Webpack dev server to view
+`npm install webpack-dev-server`
+`webpack-dev-server` to run
+
+Keynote also incuded.
