@@ -13,19 +13,18 @@ export default class SimpleD3 extends React.Component {
           {label: "Angular", value: 1497},
           {label: "React", value: 4305}
         ]
-      },{
-        key: "Stars",
-        values: [
-          {label: "Angular", value: 5500},
-          {label: "React", value: 28493}
-        ]
       }],
     };
   }
 
   componentDidMount () {
-    window.setTimeout(this.updateOne.bind(this), 5000);
-    window.setTimeout(this.updateTwo.bind(this), 10000);
+    this.timerOne = window.setTimeout(this.updateOne.bind(this), 5000);
+    this.timerTwo = window.setTimeout(this.updateTwo.bind(this), 10000);
+  }
+
+  componentWillUnmount () {
+    window.clearTimeout(this.timerOne);
+    window.clearTimeout(this.timerTwo);
   }
 
   updateOne () {
@@ -39,12 +38,6 @@ export default class SimpleD3 extends React.Component {
         values: [
           {label: "Angular", value: 3000},
           {label: "React", value: 4305}
-        ]
-      },{
-        key: "Stars",
-        values: [
-          {label: "Angular", value: 18000},
-          {label: "React", value: 28493}
         ]
       }]
     });

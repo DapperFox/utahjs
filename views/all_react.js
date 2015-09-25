@@ -18,8 +18,13 @@ export default class AllReact extends React.Component {
   }
   
   componentDidMount () {
-    window.setTimeout(this.updateOne.bind(this), 200);
-    window.setTimeout(this.updateTwo.bind(this), 5000);
+    this.timerOne = window.setTimeout(this.updateOne.bind(this), 200);
+    this.timerTwo = window.setTimeout(this.updateTwo.bind(this), 5000);
+  }
+
+  componentWillUnmount () {
+    window.clearTimeout(this.timeOne);
+    window.clearTimeout(this.timerTwo);
   }
 
   updateOne () {
