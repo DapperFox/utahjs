@@ -6,20 +6,19 @@ export default class SimpleD3 extends React.Component {
 
   buildGraph() {
     NVD3.addGraph(() => {
-      this.chart = nv.models.discreteBarChart()
+      this.chart = NVD3.models.discreteBarChart();
+      this.chart
         .x(function(d) { return d.label })
         .y(function(d) { return d.value })
-        .color(d3.scale.category10().range());
 
-        NVD3.utils.windowResize(this.chart.update);
-
+      NVD3.utils.windowResize(this.chart.update);
       return this.chart;
     });
   }
 
   componentDidMount() {
     this.buildGraph();
-    this.update()
+    this.update();
   }
 
   componentWillUpdate() {
@@ -27,17 +26,17 @@ export default class SimpleD3 extends React.Component {
   }
 
   update () {
-    d3.select(React.findDOMNode(this))
+    NVD3.addGraph(() => {
+      d3.select(React.findDOMNode(this))
         .datum(this.props.data)
         .transition().duration(500)
         .call(this.chart);
-
-
+    });
   }
 
   render() {
     return (
-      <div className="simple-bar"></div>
+      <svg className="simple-bar"></svg>
     );
   }
 } 

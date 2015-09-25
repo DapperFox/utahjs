@@ -9,10 +9,16 @@ export default class SimpleD3 extends React.Component {
 
   getData () {
     return [{
-      key: "Cumulative Return",
+      key: "Forks",
       values: [
-        {label: "1", value: 1},
-        {label: "2", value: 2}
+        {label: "Angular", value: 1497},
+        {label: "React", value: 4305}
+      ]
+    },{
+      key: "Stars",
+      values: [
+        {label: "Angular", value: 5500},
+        {label: "React", value: 28493}
       ]
     }];
   }

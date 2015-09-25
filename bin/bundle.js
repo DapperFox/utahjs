@@ -22142,8 +22142,11 @@
 	    key: "getData",
 	    value: function getData() {
 	      return [{
-	        key: "Cumulative Return",
-	        values: [{ label: "1", value: 1 }, { label: "2", value: 2 }]
+	        key: "Forks",
+	        values: [{ label: "Angular", value: 1497 }, { label: "React", value: 4305 }]
+	      }, {
+	        key: "Stars",
+	        values: [{ label: "Angular", value: 5500 }, { label: "React", value: 28493 }]
 	      }];
 	    }
 	  }]);
@@ -23803,14 +23806,14 @@
 	      var _this = this;
 
 	      _nvd32["default"].addGraph(function () {
-	        _this.chart = nv.models.discreteBarChart().x(function (d) {
+	        _this.chart = _nvd32["default"].models.discreteBarChart();
+	        _this.chart.x(function (d) {
 	          return d.label;
 	        }).y(function (d) {
 	          return d.value;
-	        }).color(_d32["default"].scale.category10().range());
+	        });
 
 	        _nvd32["default"].utils.windowResize(_this.chart.update);
-
 	        return _this.chart;
 	      });
 	    }
@@ -23828,12 +23831,16 @@
 	  }, {
 	    key: "update",
 	    value: function update() {
-	      _d32["default"].select(_react2["default"].findDOMNode(this)).datum(this.props.data).transition().duration(500).call(this.chart);
+	      var _this2 = this;
+
+	      _nvd32["default"].addGraph(function () {
+	        _d32["default"].select(_react2["default"].findDOMNode(_this2)).datum(_this2.props.data).transition().duration(500).call(_this2.chart);
+	      });
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      return _react2["default"].createElement("div", { className: "simple-bar" });
+	      return _react2["default"].createElement("svg", { className: "simple-bar" });
 	    }
 	  }]);
 
