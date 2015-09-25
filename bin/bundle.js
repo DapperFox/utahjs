@@ -90,33 +90,46 @@
 	        "div",
 	        { className: "layout" },
 	        _react2["default"].createElement(
-	          "ul",
+	          "nav",
 	          null,
 	          _react2["default"].createElement(
-	            "li",
-	            null,
+	            "div",
+	            { className: "nav-wrapper grey darken-4" },
 	            _react2["default"].createElement(
-	              _reactRouter.Link,
-	              { to: "/simple" },
-	              "Simple"
-	            )
-	          ),
-	          _react2["default"].createElement(
-	            "li",
-	            null,
+	              "a",
+	              { href: "#", className: "brand-logo teal-text accent-2-text" },
+	              "NUVI"
+	            ),
 	            _react2["default"].createElement(
-	              _reactRouter.Link,
-	              { to: "/react" },
-	              "All React"
-	            )
-	          ),
-	          _react2["default"].createElement(
-	            "li",
-	            null,
-	            _react2["default"].createElement(
-	              _reactRouter.Link,
-	              { to: "/advanced" },
-	              "Advanced"
+	              "ul",
+	              { id: "nav-mobile", className: "right hide-on-med-and-down" },
+	              _react2["default"].createElement(
+	                "li",
+	                null,
+	                _react2["default"].createElement(
+	                  _reactRouter.Link,
+	                  { to: "/simple" },
+	                  "Simple"
+	                )
+	              ),
+	              _react2["default"].createElement(
+	                "li",
+	                null,
+	                _react2["default"].createElement(
+	                  _reactRouter.Link,
+	                  { to: "/react" },
+	                  "All React"
+	                )
+	              ),
+	              _react2["default"].createElement(
+	                "li",
+	                null,
+	                _react2["default"].createElement(
+	                  _reactRouter.Link,
+	                  { to: "/advanced" },
+	                  "Advanced"
+	                )
+	              )
 	            )
 	          )
 	        ),
