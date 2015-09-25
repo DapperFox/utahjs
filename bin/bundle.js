@@ -22162,7 +22162,7 @@
 	          values: [{ label: "Angular", value: 3000 }, { label: "React", value: 4305 }]
 	        }, {
 	          key: "Stars",
-	          values: [{ label: "Angular", value: 10000 }, { label: "React", value: 28493 }]
+	          values: [{ label: "Angular", value: 18000 }, { label: "React", value: 28493 }]
 	        }]
 	      });
 	    }

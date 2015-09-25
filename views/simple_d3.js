@@ -43,7 +43,7 @@ export default class SimpleD3 extends React.Component {
       },{
         key: "Stars",
         values: [
-          {label: "Angular", value: 10000},
+          {label: "Angular", value: 18000},
           {label: "React", value: 28493}
         ]
       }]
