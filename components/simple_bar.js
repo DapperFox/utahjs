@@ -24,11 +24,7 @@ export default class SimpleD3 extends React.Component {
     this.update();
   }
 
-<<<<<<< HEAD
-  componentWillUpdate() {
-=======
   componentWillUpdate () {
->>>>>>> 863f386c59e9dac2e9165bcb0e30192a62aa7e7e
     this.update();
   }
 
