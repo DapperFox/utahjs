@@ -22276,7 +22276,6 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      console.log('render');
 	      return _react2["default"].createElement(_componentsSimple_bar2["default"], { data: this.state.data });
 	    }
 	  }]);
@@ -22348,7 +22347,8 @@
 	          return d.label;
 	        }).y(function (d) {
 	          return d.value;
-	        }).tooltips(true);
+	        });
+	        _this.chart.tooltip.enabled();
 
 	        _nvd32["default"].utils.windowResize(_this.chart.update);
 	        return _this.chart;

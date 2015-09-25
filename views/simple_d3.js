@@ -19,7 +19,7 @@ export default class SimpleD3 extends React.Component {
           {label: "Angular", value: 5500},
           {label: "React", value: 28493}
         ]
-      }]
+      }],
     };
   }
 
@@ -51,7 +51,6 @@ export default class SimpleD3 extends React.Component {
   }
 
   render () {
-    console.log('render');
     return <SimpleBar data={ this.state.data } />
   }
 

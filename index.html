@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
       <title>Hey UtahJS</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css"/>
+      <link rel="stylesheet" href="https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.css" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
       <style>
-        .chart {
-          height: 100vh;
-          width: 500px;
+        nav {
+          margin-bottom: 20px;
+        }
+        .container {
+          height: 80vh;
+          height: calc(100vh - 84px);
         }
         svg {
-          height: 100vh;
-          width: 500px;
+          height: 80vh;
+          width: 100%;
         }
         .funnel {
-          height: 90vh;
+          height: 80vh;
           display: flex;
           flex-wrap: nowrap;
           align-items: center;
