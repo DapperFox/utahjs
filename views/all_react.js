@@ -6,10 +6,10 @@ export default class AllReact extends React.Component {
     super(...arguments);
     this.state = {
       data: [
-        {value: 100, label: "First"},
-        {value: 50, label: "Second"},
-        {value: 40, label: "Third"},
-        {value: 10, label: "Four"},
+        {value: 100, label: "New Session"},
+        {value: 50, label: "Add To Cart"},
+        {value: 40, label: "Checkout"},
+        {value: 10, label: "Complete Purchase"},
       ]
     };
   }
@@ -29,10 +29,10 @@ export default class AllReact extends React.Component {
   updateTwo () {
     this.setState({
       data: [
-        {value: 200, label: "First"},
-        {value: 180, label: "Second"},
-        {value: 40, label: "Third"},
-        {value: 10, label: "Four"},
+        {value: 180, label: "New Session"},
+        {value: 160, label: "Add To Cart"},
+        {value: 40, label: "Checkout"},
+        {value: 12, label: "Complete Purchase"},
       ]
     });
   }
