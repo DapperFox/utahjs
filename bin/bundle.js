@@ -22332,13 +22332,8 @@
 	  }
 
 	  _createClass(SimpleD3, [{
-	    key: "shouldComponentUpdate",
-	    value: function shouldComponentUpdate(nextProps, nextState) {
-	      return !(0, _reactLibShallowEqual2["default"])(this.props, nextProps) || !(0, _reactLibShallowEqual2["default"])(this.state, nextState);
-	    }
-	  }, {
-	    key: "buildGraph",
-	    value: function buildGraph() {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
 	      var _this = this;
 
 	      _nvd32["default"].addGraph(function () {
@@ -22353,11 +22348,6 @@
 	        _nvd32["default"].utils.windowResize(_this.chart.update);
 	        return _this.chart;
 	      });
-	    }
-	  }, {
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      this.buildGraph();
 	      this.update();
 	    }
 	  }, {
@@ -22379,6 +22369,11 @@
 	    key: "render",
 	    value: function render() {
 	      return _react2["default"].createElement("svg", { className: "simple-bar" });
+	    }
+	  }, {
+	    key: "shouldComponentUpdate",
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return !(0, _reactLibShallowEqual2["default"])(this.props, nextProps) || !(0, _reactLibShallowEqual2["default"])(this.state, nextState);
 	    }
 	  }]);
 

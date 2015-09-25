@@ -5,11 +5,7 @@ import shallowEqual from "react/lib/shallowEqual";
 
 export default class SimpleD3 extends React.Component {
 
-  shouldComponentUpdate (nextProps, nextState) {
-    return !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
-  }
-
-  buildGraph() {
+  componentDidMount() {
     NVD3.addGraph(() => {
       this.chart = NVD3.models.discreteBarChart();
       this.chart
@@ -20,10 +16,6 @@ export default class SimpleD3 extends React.Component {
       NVD3.utils.windowResize(this.chart.update);
       return this.chart;
     });
-  }
-
-  componentDidMount() {
-    this.buildGraph();
     this.update();
   }
 
@@ -45,5 +37,9 @@ export default class SimpleD3 extends React.Component {
     return (
       <svg className="simple-bar"></svg>
     );
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    return !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
   }
 } 
