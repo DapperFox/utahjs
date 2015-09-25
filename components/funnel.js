@@ -4,11 +4,9 @@ export default class Funnel extends Component {
 
   constructor () {
     super(...arguments);
-    this.gapSize = 20;
   }
 
   componentDidMount () {
-    var dom = React.findDOMNode(this);
     this.setState({
       height: React.findDOMNode(this).offsetHeight
     });

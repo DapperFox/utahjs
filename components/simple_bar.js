@@ -12,7 +12,6 @@ export default class SimpleD3 extends React.Component {
         .x(function(d) { return d.label })
         .y(function(d) { return d.value });
       this.chart.tooltip.enabled();
-
       NVD3.utils.windowResize(this.chart.update);
       return this.chart;
     });
@@ -24,7 +23,6 @@ export default class SimpleD3 extends React.Component {
   }
 
   update () {
-    console.log('update');
     NVD3.addGraph(() => {
       d3.select(React.findDOMNode(this))
         .datum(this.props.data)
