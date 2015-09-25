@@ -23845,12 +23845,33 @@
 	    _classCallCheck(this, AllReact);
 
 	    _get(Object.getPrototypeOf(AllReact.prototype), "constructor", this).apply(this, arguments);
+	    this.state = {
+	      data: [{ value: 100, label: "First" }, { value: 50, label: "Second" }, { value: 40, label: "Third" }, { value: 10, label: "Four" }]
+	    };
 	  }
 
 	  _createClass(AllReact, [{
 	    key: "render",
 	    value: function render() {
-	      return _react2["default"].createElement(_componentsFunnel2["default"], { data: this.getFunnelData() });
+	      return _react2["default"].createElement(_componentsFunnel2["default"], { data: this.state.data });
+	    }
+	  }, {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      window.setTimeout(this.updateOne.bind(this), 200);
+	      window.setTimeout(this.updateTwo.bind(this), 5000);
+	    }
+	  }, {
+	    key: "updateOne",
+	    value: function updateOne() {
+	      this.setState(this.state);
+	    }
+	  }, {
+	    key: "updateTwo",
+	    value: function updateTwo() {
+	      this.setState({
+	        data: [{ value: 200, label: "First" }, { value: 180, label: "Second" }, { value: 40, label: "Third" }, { value: 10, label: "Four" }]
+	      });
 	    }
 	  }]);
 
@@ -23874,11 +23895,15 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
 
 	var Funnel = (function (_Component) {
 	  _inherits(Funnel, _Component);
@@ -23893,9 +23918,9 @@
 	  _createClass(Funnel, [{
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
+	      var dom = _react2["default"].findDOMNode(this);
 	      this.setState({
-	        width: this.getDOMNode().offsetWidth,
-	        height: this.getDOMNode().offsetHeight
+	        height: _react2["default"].findDOMNode(this).offsetHeight
 	      });
 	    }
 	  }, {
@@ -23905,19 +23930,39 @@
 
 	      var size = this.props.data.length;
 	      var max = this.props.data[0].value;
-	      return React.createElement(
+	      return _react2["default"].createElement(
 	        "div",
 	        { className: "funnel" },
-	        this.props.data.map(function (datum) {
-	          return _this.renderVisualization(datum, max);
+	        this.props.data.map(function (datum, i) {
+	          var prev = _this.props.data[i - 1];
+	          return _this.renderVisualization(datum, prev, max);
 	        })
 	      );
 	    }
 	  }, {
 	    key: "renderVisualization",
-	    value: function renderVisualization(datum, max) {
-	      var height = datum.value / max;
-	      return React.createElement("div", { style: { height: height + "px" }, className: "funnel-piece" });
+	    value: function renderVisualization(datum, previous, maxValue) {
+	      if (!this.state || !this.state.height) {
+	        return null;
+	      }
+	      var originalHeight = this.calculateHeightForDatum(datum, maxValue);
+	      var height = originalHeight;
+	      var borderSize = '0';
+	      if (previous) {
+	        height = this.calculateHeightForDatum(previous, maxValue);
+	        borderSize = (height - originalHeight) / 2;
+	      }
+	      return _react2["default"].createElement(
+	        "div",
+	        { key: datum.label, style: { height: height + "px", borderTopWidth: borderSize + "px", borderBottomWidth: borderSize + "px" }, className: "funnel-piece" },
+	        datum.label
+	      );
+	    }
+	  }, {
+	    key: "calculateHeightForDatum",
+	    value: function calculateHeightForDatum(datum, maxValue) {
+	      var scale = datum.value / maxValue;
+	      return scale * this.state.height;
 	    }
 	  }]);
 

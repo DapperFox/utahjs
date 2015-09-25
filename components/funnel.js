@@ -1,4 +1,4 @@
-import { Component, PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 
 export default class Funnel extends Component {
 
@@ -8,9 +8,9 @@ export default class Funnel extends Component {
   }
 
   componentDidMount () {
+    var dom = React.findDOMNode(this);
     this.setState({
-      width: this.getDOMNode().offsetWidth,
-      height: this.getDOMNode().offsetHeight
+      height: React.findDOMNode(this).offsetHeight
     });
   }
 
@@ -19,14 +19,31 @@ export default class Funnel extends Component {
     var max = this.props.data[0].value;
     return (
       <div className="funnel">
-        { this.props.data.map((datum) => { return this.renderVisualization(datum, max); }) }
+        { this.props.data.map((datum, i) => {
+          var prev = this.props.data[i-1];
+          return this.renderVisualization(datum, prev, max); 
+        }) }
       </div>
     );
   }
 
-  renderVisualization (datum, max) {
-    var height = datum.value/max;
-    return <div style={{ height: `${height}px`}} className="funnel-piece"></div>;
+  renderVisualization (datum, previous, maxValue) {
+    if (!this.state || !this.state.height) {
+      return null;
+    }
+    var originalHeight = this.calculateHeightForDatum(datum, maxValue);
+    var height = originalHeight;
+    var borderSize = '0';
+    if (previous) {
+      height = this.calculateHeightForDatum(previous, maxValue);
+      borderSize = (height - originalHeight) / 2;
+    }
+    return <div key={ datum.label } style={{ height: `${height}px`, borderTopWidth: `${borderSize}px`, borderBottomWidth: `${borderSize}px`}} className="funnel-piece">{ datum.label }</div>;
+  }
+
+  calculateHeightForDatum (datum, maxValue) {
+    var scale = datum.value / maxValue;
+    return scale * this.state.height;
   }
 
 };

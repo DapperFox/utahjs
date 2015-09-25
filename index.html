@@ -12,6 +12,32 @@
           height: 500px;
           width: 500px;
         }
+        .funnel {
+          height: 90vh;
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          align-content: start;
+          box-sizing: border-box;
+        }
+        .funnel-piece {
+          background-color: #268cad;
+          flex: 1 1 auto;
+          flex-grow: 1;
+          width: 100px;
+          box-sizing: border-box;
+          border-color: white white white #187896;
+          border-style: solid;
+          border-width: 0 0 0 20px;
+          transition: 300ms;
+          text-align: center;
+          vertical-align: center;
+          color: white;
+          line-height: 2em;
+        }
+        .funnel-piece:first-child {
+          border-width: 0;
+        }
       </style>
   </head>
   <body>
