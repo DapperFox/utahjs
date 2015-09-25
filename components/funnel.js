@@ -37,10 +37,18 @@ export default class Funnel extends Component {
       borderSize = (height - originalHeight) / 2;
     }
     return (
-      <div key={ datum.label } style={{ height: `${height}px`, borderTopWidth: `${borderSize}px`, borderBottomWidth: `${borderSize}px`}} className="funnel-piece">
+      <div key={ datum.label } style={ this.renderPieceStyle() } className="funnel-piece">
         <div className="funnel-piece-label">{ datum.label }</div>
       </div>
     );
+  }
+
+  renderPieceStyle () {
+    return {
+      height: `${height}px`,
+      borderTopWidth: `${borderSize}px`,
+      borderBottomWidth: `${borderSize}px`
+    };
   }
 
   calculateHeightForDatum (datum, maxValue) {

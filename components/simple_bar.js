@@ -5,6 +5,12 @@ import shallowEqual from "react/lib/shallowEqual";
 
 export default class SimpleD3 extends React.Component {
 
+  render() {
+    return (
+      <svg className="simple-bar"></svg>
+    );
+  }
+
   componentDidMount () {
     NVD3.addGraph(() => {
       this.chart = NVD3.models.discreteBarChart();
@@ -29,12 +35,6 @@ export default class SimpleD3 extends React.Component {
         .transition().duration(500)
         .call(this.chart);
     });
-  }
-
-  render() {
-    return (
-      <svg className="simple-bar"></svg>
-    );
   }
 
   shouldComponentUpdate (nextProps, nextState) {
