@@ -9,8 +9,8 @@ export default class SimpleD3 extends React.Component {
     NVD3.addGraph(() => {
       this.chart = NVD3.models.discreteBarChart();
       this.chart
-        .x(function(d) { return d.label })
-        .y(function(d) { return d.value });
+        .x(function(d) { return d.label; })
+        .y(function(d) { return d.value; });
       this.chart.tooltip.enabled();
       NVD3.utils.windowResize(this.chart.update);
       return this.chart;
@@ -19,7 +19,7 @@ export default class SimpleD3 extends React.Component {
   }
 
   componentWillUpdate() {
-    this.update()
+    this.update();
   }
 
   update () {

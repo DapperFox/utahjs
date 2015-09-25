@@ -10,7 +10,7 @@ class Layout extends React.Component {
       <div className="layout">
         <nav>
           <div className="nav-wrapper grey darken-4">
-            <a href="#" className="brand-logo teal-text accent-2-text">NUVI</a>
+            <a href="#" className="brand-logo teal-text text-accent-2">NUVI</a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li><Link to="/simple">Simple</Link></li>
               <li><Link to="/react">All React</Link></li>
